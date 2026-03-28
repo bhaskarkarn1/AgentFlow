@@ -1,0 +1,24 @@
+# Dependencies
+venv/
+node_modules/
+dashboard/node_modules/
+
+# Environment
+.env
+.env.local
+
+# Database (reset before demo)
+enterprise.db
+
+# Build output
+dashboard/dist/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
