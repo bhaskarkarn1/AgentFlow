@@ -65,7 +65,7 @@ class StrategyPlanner:
 
         try:
             response = self.model.invoke(prompt)
-            plan = response.content
+            plan = LLMFactory.safe_content(response)
             LLMFactory.log_usage("Planner", "gemini-2.0-flash", len(prompt))
         except Exception as e:
             plan = "Fallback plan: Execute standard procedure for this scenario type."

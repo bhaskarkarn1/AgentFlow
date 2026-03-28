@@ -28,7 +28,7 @@ class VernacularAgent:
 
         try:
             response = self.model.invoke(prompt)
-            report = response.content
+            report = LLMFactory.safe_content(response)
             LLMFactory.log_usage("Vernacular", "gemini-2.0-flash-lite", len(prompt))
         except Exception as e:
             report = f"Workflow completed for {scenario_type}. Check audit logs for details."

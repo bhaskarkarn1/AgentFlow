@@ -71,7 +71,7 @@ EDGE_CASES_ADDRESSED: [true/false]"""
 
         try:
             response = self.model.invoke(prompt)
-            grade = response.content
+            grade = LLMFactory.safe_content(response)
             LLMFactory.log_usage("Grader", "gemini-2.0-flash", len(prompt))
         except Exception as e:
             grade = "GPA: 3.0\nVERDICT: Evaluation failed, defaulting to moderate confidence.\nAMBIGUITY_DETECTED: false\nAUTO_APPROVE: false\nEDGE_CASES_ADDRESSED: false"

@@ -123,7 +123,7 @@ class SignalIngestor:
         
         try:
             response = self.model.invoke(prompt)
-            signal_description = response.content
+            signal_description = LLMFactory.safe_content(response)
             LLMFactory.log_usage("Ingestor", "gemini-2.0-flash-lite", len(prompt))
         except Exception as e:
             signal_description = self._fallback_extraction(scenario_type, scenario_data)

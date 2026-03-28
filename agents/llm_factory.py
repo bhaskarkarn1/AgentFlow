@@ -45,6 +45,29 @@ class LLMFactory:
         )
 
     @staticmethod
+    def safe_content(response) -> str:
+        """
+        Safely extract string content from an LLM response.
+        Handles cases where response.content is a list (Gemini multi-part)
+        instead of a plain string.
+        """
+        content = response.content
+        if isinstance(content, str):
+            return content
+        if isinstance(content, list):
+            # Join all parts that are strings; stringify non-strings
+            parts = []
+            for part in content:
+                if isinstance(part, str):
+                    parts.append(part)
+                elif isinstance(part, dict):
+                    parts.append(part.get("text", str(part)))
+                else:
+                    parts.append(str(part))
+            return "\n".join(parts)
+        return str(content)
+
+    @staticmethod
     def log_usage(agent_name: str, model_tier: str, prompt_length: int):
         """Log model usage for cost tracking dashboard."""
         # Estimated token costs (even at ₹0, we show the math)

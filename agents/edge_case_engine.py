@@ -716,8 +716,10 @@ class SecurityGuard:
     ]
 
     @classmethod
-    def scan_input(cls, text: str, source: str = "user_input") -> dict:
+    def scan_input(cls, text, source: str = "user_input") -> dict:
         """Scan input text for prompt injection attacks."""
+        if not isinstance(text, str):
+            text = str(text) if text is not None else ""
         if not text:
             return {"safe": True, "threats": []}
 
@@ -765,8 +767,10 @@ class SecurityGuard:
         }
 
     @classmethod
-    def mask_sensitive_data(cls, text: str) -> str:
+    def mask_sensitive_data(cls, text) -> str:
         """Mask sensitive data in log output."""
+        if not isinstance(text, str):
+            text = str(text) if text is not None else ""
         masked = text
         for pattern in cls.SENSITIVE_PATTERNS:
             # Find the pattern and mask the value after it

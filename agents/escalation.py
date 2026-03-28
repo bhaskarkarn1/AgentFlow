@@ -97,7 +97,7 @@ Keep it professional and actionable."""
 
         try:
             response = self.model.invoke(prompt)
-            escalation_message = response.content
+            escalation_message = LLMFactory.safe_content(response)
             LLMFactory.log_usage("Escalation", "gemini-2.0-flash-lite", len(prompt))
         except Exception as e:
             escalation_message = f"ESCALATION: {len(failed_steps)} step(s) failed after max retries. Manual intervention required."

@@ -86,7 +86,7 @@ OUTPUT: Structured risk assessment with clear findings."""
 
         try:
             response = self.model.invoke(prompt)
-            diagnosis = response.content
+            diagnosis = LLMFactory.safe_content(response)
             LLMFactory.log_usage("Diagnostic", "gemini-2.0-flash", len(prompt))
         except Exception as e:
             diagnosis = self._fallback_diagnosis(scenario_type, tool_results)
