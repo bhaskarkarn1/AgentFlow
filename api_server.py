@@ -56,6 +56,19 @@ app.add_middleware(
 )
 
 # ==========================================
+# Health Check / Root Endpoint
+# ==========================================
+@app.get("/")
+async def root():
+    return {
+        "service": "AgentFlow API",
+        "version": "2.0",
+        "status": "operational",
+        "docs": "/docs",
+        "endpoints": ["/api/scenarios", "/api/run", "/api/status", "/ws"],
+    }
+
+# ==========================================
 # Agent Instances
 # ==========================================
 ingestor_agent = SignalIngestor()
