@@ -152,10 +152,12 @@ function App() {
     }
   }, [status, report])
 
+  const DB_API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+
   const fetchTables = async () => {
     setDbLoading(true)
     try {
-      const res = await fetch('http://localhost:8000/api/database/tables')
+      const res = await fetch(`${DB_API}/api/database/tables`)
       const data = await res.json()
       setDbTables(data)
     } catch (e) { console.error('Failed to fetch tables:', e) }
@@ -165,7 +167,7 @@ function App() {
   const fetchTableData = async (tableName) => {
     setDbLoading(true)
     try {
-      const res = await fetch(`http://localhost:8000/api/database/table/${tableName}`)
+      const res = await fetch(`${DB_API}/api/database/table/${tableName}`)
       const data = await res.json()
       setDbTableData(data)
     } catch (e) { console.error('Failed to fetch table data:', e) }
