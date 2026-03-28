@@ -248,14 +248,23 @@ def _seed_approval_requests(cursor: sqlite3.Cursor):
 # ──────────────────────────────────────────
 
 def insert_employee(employee_data: dict):
-    """Insert a new employee record from the onboarding agent."""
+    """Insert a new employee record from the onboarding agent.
+    Uses INSERT OR IGNORE to prevent overwriting existing employees on ID collision.
+    """
     conn = get_connection()
     try:
+        emp_id = employee_data.get("employee_id", "UNKNOWN")
+        # Check if this exact ID already exists (should be rare with 8-char hex hash IDs)
+        existing = conn.execute("SELECT employee_id, name FROM employees WHERE employee_id = ?", (emp_id,)).fetchone()
+        if existing:
+            print(f"⚠️ Employee ID {emp_id} already exists (name: {existing['name']}). Skipping duplicate insert.")
+            return
+
         conn.execute("""
-            INSERT OR REPLACE INTO employees (employee_id, name, role, department, team, email, start_date, status, buddy, created_by, created_at)
+            INSERT INTO employees (employee_id, name, role, department, team, email, start_date, status, buddy, created_by, created_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, 'ACTIVE', ?, 'AGENT', ?)
         """, (
-            employee_data.get("employee_id", "UNKNOWN"),
+            emp_id,
             employee_data.get("employee_name", "Unknown"),
             employee_data.get("role", "Unknown"),
             employee_data.get("department", "Unknown"),

@@ -622,10 +622,23 @@ def build_onboarding_data(config: dict) -> dict:
     role = config.get("role", "SDE-II")
     dept = config.get("department", "Engineering")
     date = config.get("start_date", "2026-03-31")
-    # Use timestamp-based unique ID to prevent collisions for same-name employees
+    # Generate a truly unique employee ID using high-precision timestamp + hash
     import hashlib
-    unique_seed = f"{name}-{dept}-{date}-{time.time()}"
-    emp_id = f"EMP-2026-{int(hashlib.sha256(unique_seed.encode()).hexdigest()[:8], 16) % 9000 + 1000:04d}"
+    unique_seed = f"{name}-{dept}-{date}-{time.time()}-{id(config)}"
+    hex_hash = hashlib.sha256(unique_seed.encode()).hexdigest()[:8].upper()
+    emp_id = f"EMP-2026-{hex_hash}"
+
+    # Generate email — check for same-name employees to avoid email collision
+    base_email = f"{name.lower().replace(' ', '.')}@company.com"
+    try:
+        from agents import database as _db
+        existing = _db.find_employees_by_name(name)
+        if existing:
+            # Same name already exists — append unique suffix to email
+            base_email = f"{name.lower().replace(' ', '.')}.{hex_hash[:4].lower()}@company.com"
+    except Exception:
+        pass
+
     return {
         "task_id": emp_id,
         "scenario_type": "onboarding",
@@ -635,7 +648,7 @@ def build_onboarding_data(config: dict) -> dict:
             "role": role,
             "department": dept,
             "start_date": date,
-            "email": f"{name.lower().replace(' ', '.')}@company.com",
+            "email": base_email,
             "manager": "Rajiv Menon",
             "office_location": "Bengaluru HQ",
             "buddy_pool": ["Ananya Desai (SDE-III)", "Vikram Patel (Tech Lead)", "Sneha Rao (SDE-III)"],

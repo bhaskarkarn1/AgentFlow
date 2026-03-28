@@ -148,14 +148,46 @@ class HRSystemTool:
             "status": "ACTIVE",
             "created_at": datetime.now().isoformat()
         }
+
+        # ── Edge case: Duplicate name detection ──
+        # Check if someone with the same name already exists in the database
+        duplicate_info = None
+        try:
+            existing = db.find_employees_by_name(name)
+            if existing:
+                # Same name exists — this is a valid edge case, NOT an error
+                # Both employees get unique IDs so both are stored correctly
+                duplicate_info = {
+                    "type": "DUPLICATE_NAME_DETECTED",
+                    "message": f"Employee '{name}' already exists ({len(existing)} record(s)). "
+                               f"New record created with unique ID '{emp_id}' to avoid collision.",
+                    "existing_ids": [e.get("employee_id", "?") for e in existing],
+                    "new_id": emp_id,
+                    "resolution": "UNIQUE_ID_ASSIGNED"
+                }
+                db.log_edge_case(
+                    category="IDENTITY_ENTITY",
+                    severity="MEDIUM",
+                    message=f"Duplicate name detected: '{name}' already exists in {existing[0].get('department', 'unknown')} department",
+                    details=json.dumps(duplicate_info, default=str),
+                    resolution=f"Both records preserved with unique IDs. New ID: {emp_id}"
+                )
+        except Exception:
+            pass
+
         # Persist to enterprise database
         db.insert_employee(employee_data)
-        return ToolResult(True, {
+
+        result_data = {
             "employee_id": emp_id,
             "employee_name": name,
             "status": "RECORD_CREATED",
             "systems_updated": ["Workday", "Active Directory", "SSO"]
-        }, "HR_System", f"Create record for {name}")
+        }
+        if duplicate_info:
+            result_data["edge_case"] = duplicate_info
+
+        return ToolResult(True, result_data, "HR_System", f"Create record for {name}")
 
     def assign_buddy(self, employee_id: str, buddy_pool: list) -> ToolResult:
         """Assign an onboarding buddy from the available pool."""
