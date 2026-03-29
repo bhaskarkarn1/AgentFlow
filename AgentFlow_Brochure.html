@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AgentFlow — Project Brochure</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════ */
+/* BASE                                            */
+/* ═══════════════════════════════════════════════ */
+@page { size: 794px 1123px; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #1a1a2e;
+  line-height: 1.5;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  width: 794px;
+}
+
+/* ═══════════════════════════════════════════════ */
+/* EACH PAGE = EXACT A4 CONTAINER                  */
+/* ═══════════════════════════════════════════════ */
+.page {
+  width: 794px;
+  height: 1123px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  page-break-after: always;
+}
+.page:last-child { page-break-after: avoid; }
+
+/* Content wrapper with flexbox for vertical fill */
+.pw {
+  padding: 36px 42px 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.pw > .fill { flex: 1; min-height: 0; }
+
+/* Section labels */
+.sl { font-size: 11px; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; }
+.sh { font-size: 28px; font-weight: 800; color: #1a1a2e; letter-spacing: -0.5px; margin-bottom: 6px; line-height: 1.2; }
+.sd { font-size: 13px; color: #64748b; margin-bottom: 22px; line-height: 1.65; }
+
+/* Page footer */
+.pgf {
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: #94a3b8;
+  padding-top: 8px; border-top: 1px solid #eef2f7;
+  margin-top: 8px;
+}
+.pgf b { font-weight: 700; letter-spacing: 1px; color: #94a3b8; }
+
+/* ═══════════════════════════════════════════════ */
+/* PAGE 1: COVER                                   */
+/* ═══════════════════════════════════════════════ */
+.cover {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #0f0a1e 0%, #1a103d 30%, #2d1b69 60%, #1a103d 100%);
+  color: #fff;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding: 40px;
+}
+.c-hk { font-size: 12px; font-weight: 600; color: #8b5cf6; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+.c-badge { display: inline-block; padding: 8px 24px; border: 1px solid rgba(139,92,246,0.4); border-radius: 50px; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #a78bfa; margin-bottom: 36px; }
+.c-logo { font-size: 64px; margin-bottom: 12px; }
+.c-title { font-size: 54px; font-weight: 900; letter-spacing: -2px; background: linear-gradient(135deg, #fff 0%, #c4b5fd 50%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+.c-tag { font-size: 21px; font-weight: 300; color: #c4b5fd; margin-bottom: 36px; }
+.c-desc { font-size: 14px; line-height: 1.8; color: #a5b4fc; max-width: 480px; margin-bottom: 44px; }
+.c-stats { display: flex; gap: 40px; margin-bottom: 44px; }
+.c-sv { font-size: 32px; font-weight: 800; }
+.c-sl { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #8b8bb5; margin-top: 2px; }
+.c-urls { display: flex; gap: 14px; margin-bottom: 44px; }
+.c-url { padding: 10px 20px; border-radius: 8px; font-size: 11.5px; font-family: 'JetBrains Mono', monospace; color: #fff; }
+.c-url.p { background: linear-gradient(135deg, #7c3aed, #6366f1); }
+.c-url.s { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
+.c-team { font-size: 14px; font-weight: 700; color: #c4b5fd; letter-spacing: 1px; }
+.c-members { font-size: 12px; color: #8b8bb5; margin-top: 5px; }
+.c-tech { font-size: 11px; color: #6b6b8a; margin-top: 3px; }
+
+/* ═══════════════════════════════════════════════ */
+/* PAGE 2: PROBLEM CARDS                           */
+/* ═══════════════════════════════════════════════ */
+.prob {
+  background: #f8fafc; border-radius: 12px;
+  padding: 18px 20px; margin-bottom: 12px;
+  border-left: 4px solid; display: flex; gap: 14px;
+}
+.prob.a { border-color: #7c3aed; }
+.prob.b { border-color: #06b6d4; }
+.prob.c { border-color: #f59e0b; }
+.prob-icon { font-size: 30px; flex-shrink: 0; }
+.prob-title { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+.prob-desc { font-size: 12.5px; color: #475569; line-height: 1.55; }
+.prob-pain { display: inline-block; background: #fee2e2; color: #dc2626; font-size: 10.5px; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-top: 6px; }
+
+.total-bar {
+  background: linear-gradient(135deg, #1a103d, #2d1b69);
+  border-radius: 12px; padding: 20px 26px;
+  color: #fff; display: flex;
+  justify-content: space-between; align-items: center;
+}
+.tb-label { font-size: 13px; color: #a5b4fc; }
+.tb-value { font-size: 30px; font-weight: 800; }
+.tb-unit { font-size: 11px; color: #8b8bb5; }
+
+/* ═══════════════════════════════════════════════ */
+/* PAGE 3: AGENT GRID                              */
+/* ═══════════════════════════════════════════════ */
+.agents { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.agent {
+  background: #f8fafc; border-radius: 10px;
+  padding: 14px 16px; border: 1px solid #e2e8f0;
+  position: relative;
+}
+.agent-num {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 10px; font-weight: 700; color: #7c3aed;
+  background: #ede9fe; width: 22px; height: 22px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.agent-icon { font-size: 22px; margin-bottom: 4px; }
+.agent-name { font-size: 13px; font-weight: 700; color: #1a1a2e; margin-bottom: 2px; }
+.agent-desc { font-size: 11px; color: #64748b; line-height: 1.45; }
+
+/* ═══════════════════════════════════════════════ */
+/* PAGE 4: DIFFERENTIATORS                         */
+/* ═══════════════════════════════════════════════ */
+.diffs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+.diff {
+  border-radius: 12px; padding: 18px;
+}
+.diff.h1 { background: linear-gradient(135deg, #ede9fe, #f3e8ff); border: 1px solid #c4b5fd; }
+.diff.h2 { background: linear-gradient(135deg, #e0f2fe, #dbeafe); border: 1px solid #93c5fd; }
+.diff.h3 { background: linear-gradient(135deg, #d1fae5, #dcfce7); border: 1px solid #86efac; }
+.diff.h4 { background: linear-gradient(135deg, #fef3c7, #fef9c3); border: 1px solid #fcd34d; }
+.diff-icon { font-size: 24px; margin-bottom: 6px; }
+.diff-title { font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+.diff-desc { font-size: 11px; color: #475569; line-height: 1.5; }
+
+.llm-box {
+  background: #f8fafc; border-radius: 12px;
+  padding: 18px; border: 1px solid #e2e8f0;
+}
+.llm-title { font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; }
+.llm-tiers { display: flex; gap: 12px; }
+.llm-tier { flex: 1; border-radius: 10px; padding: 14px; }
+.llm-tier.light { background: #ede9fe; }
+.llm-tier.heavy { background: #e0f2fe; }
+.llm-tier-name { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+.llm-tier.light .llm-tier-name { color: #7c3aed; }
+.llm-tier.heavy .llm-tier-name { color: #0284c7; }
+.llm-tier-desc { font-size: 10.5px; color: #475569; line-height: 1.5; }
+.llm-cost { text-align: center; margin-top: 10px; font-size: 13px; font-weight: 700; color: #16a34a; }
+
+/* ═══════════════════════════════════════════════ */
+/* PAGE 5: ARCHITECTURE                            */
+/* ═══════════════════════════════════════════════ */
+.arch {
+  background: #f8fafc; border-radius: 12px;
+  padding: 18px 14px; border: 1px solid #e2e8f0;
+  margin-bottom: 14px;
+}
+.arch-row { text-align: center; margin-bottom: 4px; }
+.arch-box {
+  display: inline-block; padding: 10px 24px;
+  border-radius: 9px; text-align: center; min-width: 380px;
+}
+.arch-box.fe { background: linear-gradient(135deg, #1e1b4b, #312e81); color: #fff; }
+.arch-box.be { background: linear-gradient(135deg, #3730a3, #4338ca); color: #fff; }
+.arch-box-lbl { font-size: 8px; font-weight: 700; letter-spacing: 2px; color: #a5b4fc; }
+.arch-box-title { font-size: 12.5px; font-weight: 700; margin-top: 1px; }
+.arch-box-sub { font-size: 9px; color: #c4b5fd; margin-top: 2px; }
+
+.arch-conn { text-align: center; padding: 2px 0; }
+.arch-tags { display: flex; justify-content: center; gap: 12px; }
+.arch-tag { font-size: 9px; font-weight: 600; padding: 2px 9px; border-radius: 4px; }
+.arch-tag.ws { background: #ede9fe; color: #7c3aed; }
+.arch-tag.rest { background: #e0f2fe; color: #0284c7; }
+
+.arch-pipe {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  border-radius: 9px; padding: 12px 10px; margin: 4px 0;
+}
+.arch-pipe-lbl { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #a5b4fc; text-align: center; margin-bottom: 8px; text-transform: uppercase; }
+.arch-flow { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.arch-node {
+  background: linear-gradient(135deg, #4338ca, #6366f1);
+  color: #fff; border-radius: 8px; padding: 6px 10px;
+  text-align: center; font-size: 16px; min-width: 68px;
+}
+.arch-node span { display: block; font-size: 9px; font-weight: 600; margin-top: 1px; }
+.arch-node.hitl { background: linear-gradient(135deg, #065f46, #047857); }
+.arch-arr { font-size: 16px; color: #818cf8; font-weight: 700; }
+.arch-heal { font-size: 9px; color: #f59e0b; font-weight: 700; background: rgba(245,158,11,0.15); padding: 3px 8px; border-radius: 5px; }
+.arch-esc { font-size: 9px; font-weight: 600; color: #fca5a5; background: rgba(239,68,68,0.15); padding: 3px 10px; border-radius: 5px; }
+.arch-dn { text-align: center; font-size: 13px; color: #818cf8; line-height: 1.1; }
+
+.arch-support { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; margin-top: 5px; }
+.arch-sbox { border-radius: 7px; padding: 8px; text-align: center; }
+.arch-sbox.t1 { background: #dbeafe; border: 1px solid #93c5fd; }
+.arch-sbox.t2 { background: #fef3c7; border: 1px solid #fcd34d; }
+.arch-sbox.t3 { background: #ede9fe; border: 1px solid #c4b5fd; }
+.arch-sbox.t4 { background: #d1fae5; border: 1px solid #86efac; }
+.arch-sbox-t { font-size: 10px; font-weight: 700; color: #1a1a2e; margin-bottom: 1px; }
+.arch-sbox-d { font-size: 8px; color: #475569; }
+
+/* Tech table */
+.tech { width: 100%; border-collapse: collapse; }
+.tech th { text-align: left; padding: 8px 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; border-bottom: 2px solid #e2e8f0; }
+.tech td { padding: 7px 12px; font-size: 12px; color: #334155; border-bottom: 1px solid #f1f5f9; }
+.tech td:first-child { font-weight: 600; color: #7c3aed; }
+
+/* ═══════════════════════════════════════════════ */
+/* PAGE 6: IMPACT                                  */
+/* ═══════════════════════════════════════════════ */
+.impact { margin-bottom: 12px; }
+.impact-hdr { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.impact-icon { font-size: 24px; }
+.impact-name { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+
+.imp-tbl { width: 100%; border-collapse: collapse; margin-bottom: 4px; }
+.imp-tbl th { text-align: left; padding: 6px 12px; font-size: 9.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; background: #1a103d; }
+.imp-tbl th:first-child { border-radius: 6px 0 0 0; }
+.imp-tbl th:last-child { border-radius: 0 6px 0 0; }
+.imp-tbl td { padding: 6px 12px; font-size: 12px; color: #334155; border-bottom: 1px solid #f1f5f9; }
+.imp-tbl .bef { color: #dc2626; font-weight: 600; }
+.imp-tbl .aft { color: #16a34a; font-weight: 600; }
+
+.savings {
+  background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-radius: 6px; padding: 6px 12px;
+  font-size: 12px; font-weight: 700; color: #15803d; text-align: right;
+}
+
+.grand {
+  background: linear-gradient(135deg, #1a103d, #2d1b69);
+  border-radius: 14px; padding: 22px;
+  color: #fff; text-align: center;
+}
+.grand-lbl { font-size: 12px; color: #a5b4fc; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 2px; }
+.grand-val { font-size: 40px; font-weight: 900; background: linear-gradient(135deg, #fff, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.grand-sub { font-size: 12px; color: #8b8bb5; margin-top: 4px; }
+.grand-cost { display: inline-block; margin-top: 10px; padding: 6px 20px; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); border-radius: 50px; font-size: 12px; font-weight: 600; color: #34d399; }
+
+/* ═══════════════════════════════════════════════ */
+/* PAGE 7: EDGE CASES + CLOSING                    */
+/* ═══════════════════════════════════════════════ */
+.edge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+.edge-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 8px 10px; background: #f8fafc;
+  border-radius: 6px; border: 1px solid #e2e8f0;
+}
+.edge-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+.edge-dot.crit { background: #dc2626; }
+.edge-dot.high { background: #f59e0b; }
+.edge-dot.med  { background: #7c3aed; }
+.edge-dot.low  { background: #06b6d4; }
+.edge-label { font-size: 11.5px; font-weight: 600; color: #334155; }
+.edge-ex { font-size: 9.5px; color: #64748b; margin-top: 1px; }
+
+.closing {
+  background: linear-gradient(135deg, #1a103d, #2d1b69);
+  border-radius: 14px; padding: 28px;
+  color: #fff; text-align: center;
+}
+.closing-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.closing-desc { font-size: 12px; color: #a5b4fc; line-height: 1.6; max-width: 400px; margin: 0 auto 18px; }
+.closing-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.closing-link { padding: 9px 16px; border-radius: 7px; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #fff; }
+.closing-link.live { background: linear-gradient(135deg, #7c3aed, #6366f1); }
+.closing-link.other { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ PAGE 1: COVER -->
+<div class="page">
+  <div class="cover">
+    <div class="c-hk">ET AI Hackathon 2026</div>
+    <div class="c-badge">Multi-Agent Autonomous System</div>
+    <div class="c-logo">⚡</div>
+    <div class="c-title">AgentFlow</div>
+    <div class="c-tag">Your AI Operations Team</div>
+    <div class="c-desc">8 AI agents that work together to complete real enterprise workflows — from employee onboarding to SLA breach prevention. When things break, they fix themselves. When it matters, they ask you first.</div>
+    <div class="c-stats">
+      <div><div class="c-sv">8</div><div class="c-sl">AI Agents</div></div>
+      <div><div class="c-sv">51+</div><div class="c-sl">Edge Cases</div></div>
+      <div><div class="c-sv">100%</div><div class="c-sl">Auditable</div></div>
+      <div><div class="c-sv">₹0</div><div class="c-sl">API Cost</div></div>
+    </div>
+    <div class="c-urls">
+      <div class="c-url p">▶ agent-flow-amber.vercel.app</div>
+      <div class="c-url s">⚙ agentflow-api-788z.onrender.com</div>
+    </div>
+    <div>
+      <div class="c-team">Team AttentionIsAllYouNeed</div>
+      <div class="c-members">Bhaskar · Aditya · Harshit</div>
+      <div class="c-tech">LangGraph · Google Gemini AI · React · FastAPI · SQLite</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PAGE 2: PROBLEM -->
+<div class="page">
+  <div class="pw">
+    <div class="sl">01 — The Problem</div>
+    <div class="sh">Enterprise workflows are broken.</div>
+    <div class="sd">Three high-frequency workflows silently drain thousands of hours and lakhs of rupees every year in mid-size enterprises. They involve multiple teams, systems, and endless manual coordination.</div>
+
+    <div class="prob a"><div class="prob-icon">👤</div><div><div class="prob-title">Employee Onboarding</div><div class="prob-desc">When a new employee joins, HR must manually create accounts across 4–6 systems (Workday, JIRA, Slack, Calendar, Email, ERP), assign a buddy, schedule orientations, and verify everything — involving 3–5 people across departments.</div><div class="prob-pain">⏱ 4–6 hours per hire × 200 hires/year = 1,000+ hours wasted</div></div></div>
+
+    <div class="prob b"><div class="prob-icon">📋</div><div><div class="prob-title">Meeting-to-Action Pipeline</div><div class="prob-desc">After every team meeting, someone must manually extract action items, assign owners, create JIRA tasks, and send follow-ups. 40% of action items are forgotten within 48 hours (Harvard Business Review).</div><div class="prob-pain">📉 40% of action items lost · 45 min manual follow-up per meeting</div></div></div>
+
+    <div class="prob c"><div class="prob-icon">⚡</div><div><div class="prob-title">SLA Breach Prevention</div><div class="prob-desc">When a procurement approver goes on leave, approvals sit stuck for 24–48 hours. The SLA clock keeps ticking. Someone must find a delegate, reroute the approval, and document the override.</div><div class="prob-pain">💸 ₹5,00,000/day in SLA penalties while approvals sit idle</div></div></div>
+
+    <div class="fill"></div>
+
+    <div class="total-bar">
+      <div><div class="tb-label">Total annual cost of these broken workflows</div></div>
+      <div style="text-align:right"><div class="tb-value">₹83+ Lakhs</div><div class="tb-unit">per year, for a 500-employee company</div></div>
+    </div>
+    <div class="pgf"><b>AGENTFLOW</b><span>2 / 7</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PAGE 3: SOLUTION -->
+<div class="page">
+  <div class="pw">
+    <div class="sl">02 — The Solution</div>
+    <div class="sh">8 AI agents. One mission.</div>
+    <div class="sd">AgentFlow replaces manual coordination with specialized AI agents. Each has one job. Data flows through the pipeline. If something fails, the system heals itself. If it matters, it asks you first.</div>
+
+    <div class="agents">
+      <div class="agent"><div class="agent-num">1</div><div class="agent-icon">📡</div><div class="agent-name">Signal Ingestor</div><div class="agent-desc">Takes in the request. Extracts entities. Classifies urgency. Runs security scans against 20+ injection patterns.</div></div>
+      <div class="agent"><div class="agent-num">2</div><div class="agent-icon">🔍</div><div class="agent-name">Root Cause Analyzer</div><div class="agent-desc">Queries enterprise systems to diagnose what's wrong. Detects cross-system conflicts, ghost entities, and data inconsistencies.</div></div>
+      <div class="agent"><div class="agent-num">3</div><div class="agent-icon">📐</div><div class="agent-name">Strategy Planner</div><div class="agent-desc">Creates multi-step execution plans with tool calls, owner assignments, and dependency ordering. Validates against hallucinated tools.</div></div>
+      <div class="agent"><div class="agent-num">4</div><div class="agent-icon">🎓</div><div class="agent-name">GPA Evaluator</div><div class="agent-desc">Scores plan quality on 0.0–4.0 GPA scale. Detects contradictory reasoning. Plans below 2.0 are sent back for revision.</div></div>
+      <div class="agent"><div class="agent-num">5</div><div class="agent-icon">🧑</div><div class="agent-name">Human Review (HITL)</div><div class="agent-desc">Pauses for human approval. You approve, reject, or ask questions. 5-min timeout → auto-escalation to supervisor.</div></div>
+      <div class="agent"><div class="agent-num">6</div><div class="agent-icon">⚙️</div><div class="agent-name">Execution Engine</div><div class="agent-desc">Calls HR, JIRA, Slack, Calendar, ERP. Self-heals on failure — exponential backoff and credential rotation.</div></div>
+      <div class="agent"><div class="agent-num">7</div><div class="agent-icon">🚨</div><div class="agent-name">Escalation Handler</div><div class="agent-desc">Routes unrecoverable failures to the right human authority. Detects circular delegation loops and authority gaps.</div></div>
+      <div class="agent"><div class="agent-num">8</div><div class="agent-icon">🌐</div><div class="agent-name">Vernacular Reporter</div><div class="agent-desc">Generates bilingual Hindi + English compliance report with edge case summary, audit trail, and executive overview.</div></div>
+    </div>
+
+    <div class="fill"></div>
+    <div class="pgf"><b>AGENTFLOW</b><span>3 / 7</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PAGE 4: DIFFERENTIATORS -->
+<div class="page">
+  <div class="pw">
+    <div class="sl">03 — What Makes It Different</div>
+    <div class="sh">Not a chatbot. An operations team.</div>
+    <div class="sd">Most AI tools answer questions. AgentFlow takes multi-step actions across real systems, handles failures, and maintains a complete audit trail.</div>
+
+    <div class="diffs">
+      <div class="diff h1"><div class="diff-icon">🔧</div><div class="diff-title">Self-Healing Execution</div><div class="diff-desc">When a tool fails — API timeout, 403, rate limit — the system retries with exponential backoff, credential rotation, and graceful degradation. The dashboard shows exact error codes and recovery actions.</div></div>
+      <div class="diff h2"><div class="diff-icon">👁️</div><div class="diff-title">Full Transparency</div><div class="diff-desc">Every agent decision, tool call, and API response is logged live. A persistent SQLite database with 9 tables records every action for compliance review. No black box.</div></div>
+      <div class="diff h3"><div class="diff-icon">🧑</div><div class="diff-title">Human-in-the-Loop (HITL)</div><div class="diff-desc">Before critical actions, the system pauses with a quality score. You approve, reject, or ask questions. 5-min timeout auto-escalates to supervisor — nothing stalls.</div></div>
+      <div class="diff h4"><div class="diff-icon">🛡️</div><div class="diff-title">51+ Edge Cases Handled</div><div class="diff-desc">A centralized Edge Case Engine monitors 11 categories: duplicate identities, circular delegation, ghost entities, prompt injection, race conditions, and more.</div></div>
+    </div>
+
+    <div class="llm-box">
+      <div class="llm-title">💰 Cost-Efficient LLM Routing</div>
+      <div class="llm-tiers">
+        <div class="llm-tier light"><div class="llm-tier-name">Light Tier — Gemini Flash Lite</div><div class="llm-tier-desc">Used for: Signal Ingestor, Escalation Handler, Vernacular Reporter<br>Fast extraction tasks that don't need deep reasoning</div></div>
+        <div class="llm-tier heavy"><div class="llm-tier-name">Heavy Tier — Gemini 2.5 Flash</div><div class="llm-tier-desc">Used for: Root Cause Analyzer, Strategy Planner, GPA Evaluator<br>Complex reasoning, planning, and quality assessment</div></div>
+      </div>
+      <div class="llm-cost">Total API Cost: ₹0 (Google Gemini Free Tier)</div>
+    </div>
+
+    <div class="fill"></div>
+    <div class="pgf"><b>AGENTFLOW</b><span>4 / 7</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PAGE 5: ARCHITECTURE -->
+<div class="page">
+  <div class="pw">
+    <div class="sl">04 — System Architecture</div>
+    <div class="sh">How it's built.</div>
+    <div class="sd">A stateful directed agent graph orchestrated by LangGraph, with real-time WebSocket streaming to a React dashboard, backed by persistent SQLite storage.</div>
+
+    <div class="arch">
+      <div class="arch-row"><div class="arch-box fe"><div class="arch-box-lbl">FRONTEND</div><div class="arch-box-title">React Dashboard (Vite)</div><div class="arch-box-sub">Scenario Selector · Agent Pipeline · Edge Cases · DB Browser · Audit Trail</div></div></div>
+      <div class="arch-conn"><div class="arch-tags"><span class="arch-tag ws">▼ WebSocket</span><span class="arch-tag rest">▼ REST API</span></div></div>
+      <div class="arch-row"><div class="arch-box be"><div class="arch-box-lbl">BACKEND</div><div class="arch-box-title">FastAPI + Uvicorn (api_server.py)</div></div></div>
+      <div class="arch-pipe">
+        <div class="arch-pipe-lbl">LangGraph Stateful DAG</div>
+        <div class="arch-flow"><div class="arch-node">📡<span>Ingestor</span></div><div class="arch-arr">→</div><div class="arch-node">🔍<span>Diagnostic</span></div><div class="arch-arr">→</div><div class="arch-node">📐<span>Planner</span></div><div class="arch-arr">→</div><div class="arch-node">🎓<span>Grader</span></div></div>
+        <div class="arch-dn">▼</div>
+        <div class="arch-flow"><div class="arch-node hitl">🧑<span>HITL Gate</span></div></div>
+        <div class="arch-dn">▼</div>
+        <div class="arch-flow"><div class="arch-node">🌐<span>Vernacular</span></div><div class="arch-arr">←</div><div class="arch-node">📝<span>Auditor</span></div><div class="arch-arr">←</div><div class="arch-node">⚙️<span>Execution</span></div><div class="arch-heal">↺ Self-Heal</div></div>
+        <div class="arch-flow" style="margin-top:5px;justify-content:center"><div class="arch-esc">🚨 Escalation Handler</div></div>
+      </div>
+      <div class="arch-support">
+        <div class="arch-sbox t1"><div class="arch-sbox-t">Enterprise Tools</div><div class="arch-sbox-d">HR · JIRA · Slack · Cal · ERP</div></div>
+        <div class="arch-sbox t2"><div class="arch-sbox-t">Edge Case Engine</div><div class="arch-sbox-d">11 categories · 51+ cases</div></div>
+        <div class="arch-sbox t3"><div class="arch-sbox-t">LLM Factory</div><div class="arch-sbox-d">Flash Lite + 2.5 Flash</div></div>
+        <div class="arch-sbox t4"><div class="arch-sbox-t">SQLite DB</div><div class="arch-sbox-d">9 tables · Full audit</div></div>
+      </div>
+    </div>
+
+    <table class="tech">
+      <thead><tr><th>Layer</th><th>Technology</th><th>Why This Choice</th></tr></thead>
+      <tbody>
+        <tr><td>Orchestration</td><td>LangGraph (Stateful DAG)</td><td>State persistence, conditional routing, HITL interrupt</td></tr>
+        <tr><td>LLM</td><td>Google Gemini (Dual-Tier)</td><td>Free tier, fast inference, strong reasoning</td></tr>
+        <tr><td>Backend</td><td>FastAPI + WebSocket</td><td>Async, real-time streaming, auto API docs</td></tr>
+        <tr><td>Frontend</td><td>React (Vite)</td><td>Real-time pipeline visualization</td></tr>
+        <tr><td>Database</td><td>SQLite (9 tables)</td><td>Zero setup, embedded, portable</td></tr>
+        <tr><td>Deployment</td><td>Vercel + Render</td><td>Free tier, auto-deploy from GitHub</td></tr>
+      </tbody>
+    </table>
+
+    <div class="fill"></div>
+    <div class="pgf"><b>AGENTFLOW</b><span>5 / 7</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PAGE 6: IMPACT -->
+<div class="page">
+  <div class="pw">
+    <div class="sl">05 — Business Impact</div>
+    <div class="sh">Quantified savings.</div>
+    <div class="sd">Back-of-envelope estimates for a mid-size enterprise (500–1,000 employees). Assumptions stated explicitly.</div>
+
+    <div class="impact">
+      <div class="impact-hdr"><div class="impact-icon">👤</div><div class="impact-name">Employee Onboarding</div></div>
+      <table class="imp-tbl"><thead><tr><th>Metric</th><th>Before (Manual)</th><th>After (AgentFlow)</th></tr></thead><tbody><tr><td>Time per hire</td><td class="bef">4–6 hours</td><td class="aft">< 2 minutes</td></tr><tr><td>People involved</td><td class="bef">3–5 people</td><td class="aft">1 (approve only)</td></tr><tr><td>Error rate</td><td class="bef">~15%</td><td class="aft">< 1%</td></tr></tbody></table>
+      <div class="savings">Annual Savings: ₹15,00,000 (200 hires × 5 hrs × ₹1,500/hr)</div>
+    </div>
+
+    <div class="impact">
+      <div class="impact-hdr"><div class="impact-icon">📋</div><div class="impact-name">Meeting-to-Action</div></div>
+      <table class="imp-tbl"><thead><tr><th>Metric</th><th>Before (Manual)</th><th>After (AgentFlow)</th></tr></thead><tbody><tr><td>Follow-up time</td><td class="bef">45 minutes</td><td class="aft">< 1 minute</td></tr><tr><td>Action items lost</td><td class="bef">~40%</td><td class="aft">0% (auto-tracked)</td></tr><tr><td>JIRA creation</td><td class="bef">Manual, hours later</td><td class="aft">Instant, automatic</td></tr></tbody></table>
+      <div class="savings">Annual Savings: ₹6,00,000 (600 meetings × 40 min × ₹1,500/hr)</div>
+    </div>
+
+    <div class="impact">
+      <div class="impact-hdr"><div class="impact-icon">⚡</div><div class="impact-name">SLA Breach Prevention</div></div>
+      <table class="imp-tbl"><thead><tr><th>Metric</th><th>Before (Manual)</th><th>After (AgentFlow)</th></tr></thead><tbody><tr><td>Detection time</td><td class="bef">12–24 hours</td><td class="aft">Immediate</td></tr><tr><td>Resolution time</td><td class="bef">24–48 hours</td><td class="aft">< 2 minutes</td></tr><tr><td>Penalty exposure</td><td class="bef">₹5L/day</td><td class="aft">₹0</td></tr></tbody></table>
+      <div class="savings">Penalties Avoided: ₹45,00,000 (12 events × 1.5 days × ₹5L/day × 50%)</div>
+    </div>
+
+    <div class="fill"></div>
+
+    <div class="grand">
+      <div class="grand-lbl">Total Annual Value</div>
+      <div class="grand-val">₹83,10,000/year</div>
+      <div class="grand-sub">Conservative estimate for a 500-employee enterprise</div>
+      <div class="grand-cost">Operating Cost: ₹0/month (free tier infrastructure)</div>
+    </div>
+    <div class="pgf" style="border-top:none"><b>AGENTFLOW</b><span>6 / 7</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PAGE 7: EDGE + CLOSING -->
+<div class="page">
+  <div class="pw">
+    <div class="sl">06 — Edge Case Coverage</div>
+    <div class="sh">51+ real-world scenarios handled.</div>
+    <div class="sd">A centralized Edge Case Engine monitors 11 categories during every workflow execution.</div>
+
+    <div class="edge-grid">
+      <div class="edge-item"><div class="edge-dot crit"></div><div><div class="edge-label">Identity & Entity</div><div class="edge-ex">Duplicate names, ghost managers, cross-system inconsistency</div></div></div>
+      <div class="edge-item"><div class="edge-dot crit"></div><div><div class="edge-label">Security Threats</div><div class="edge-ex">Prompt injection (20+ patterns), SQL injection, data masking</div></div></div>
+      <div class="edge-item"><div class="edge-dot high"></div><div><div class="edge-label">Workflow Deadlock</div><div class="edge-ex">Circuit breaker, planner loop, HITL timeout, plan overflow</div></div></div>
+      <div class="edge-item"><div class="edge-dot high"></div><div><div class="edge-label">Tool & API Failure</div><div class="edge-ex">HTTP 403/429/504, auth expiry, credential rotation</div></div></div>
+      <div class="edge-item"><div class="edge-dot med"></div><div><div class="edge-label">Race Conditions</div><div class="edge-ex">Duplicate workflow prevention, idempotency keys</div></div></div>
+      <div class="edge-item"><div class="edge-dot med"></div><div><div class="edge-label">LLM Guardrails</div><div class="edge-ex">Hallucinated tools, contradictory reasoning, grade validation</div></div></div>
+      <div class="edge-item"><div class="edge-dot low"></div><div><div class="edge-label">Partial Failure</div><div class="edge-ex">State consistency, dependency tracking, partial completion</div></div></div>
+      <div class="edge-item"><div class="edge-dot low"></div><div><div class="edge-label">HITL Resilience</div><div class="edge-ex">5-min timeout, auto-escalation, WebSocket reconnection</div></div></div>
+      <div class="edge-item"><div class="edge-dot med"></div><div><div class="edge-label">Audit & Compliance</div><div class="edge-ex">Full audit log, edge case log, tool call tracing</div></div></div>
+      <div class="edge-item"><div class="edge-dot low"></div><div><div class="edge-label">System & Infrastructure</div><div class="edge-ex">Crash recovery, state persistence, LLM fallback</div></div></div>
+      <div class="edge-item"><div class="edge-dot high"></div><div><div class="edge-label">Scenario-Specific</div><div class="edge-ex">Circular delegation, conflicting dates, ambiguous ownership</div></div></div>
+    </div>
+
+    <div class="fill"></div>
+
+    <div class="closing">
+      <div class="closing-title">Ready for Evaluation</div>
+      <div class="closing-desc">Pick any scenario, customize inputs, and watch 8 AI agents complete the workflow — with full transparency, self-healing, and human oversight.</div>
+      <div class="closing-links">
+        <div class="closing-link live">▶ agent-flow-amber.vercel.app</div>
+        <div class="closing-link other">⚙ agentflow-api-788z.onrender.com</div>
+        <div class="closing-link other">⌘ github.com/bhaskarkarn1/AgentFlow</div>
+      </div>
+      <div style="margin-top:16px;font-size:13px;color:#a5b4fc;font-weight:600;">Team AttentionIsAllYouNeed</div>
+      <div style="margin-top:4px;font-size:11px;color:#8b8bb5;">Bhaskar · Aditya · Harshit — ET AI Hackathon 2026</div>
+    </div>
+    <div class="pgf" style="border-top:none"><b>AGENTFLOW</b><span>7 / 7</span></div>
+  </div>
+</div>
+
+</body>
+</html>
