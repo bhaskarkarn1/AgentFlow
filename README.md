@@ -65,7 +65,7 @@ Runs on **Google Gemini AI (free tier)**. Uses a dual-model strategy — lightwe
 | **LLM** | Google Gemini 2.5 Flash + 3.1 Flash Lite (dual-tier routing) |
 | **Backend** | FastAPI + WebSocket (real-time streaming) |
 | **Frontend** | React (Vite) — real-time agent pipeline dashboard |
-| **Database** | SQLite (8 tables — audit trail, workflow state, security events) |
+| **Database** | SQLite (9 tables — audit trail, workflow state, security events) |
 | **Deployment** | Vercel (frontend) + Render (backend) |
 | **Language** | Python 3.11 / JavaScript (ES2022) |
 

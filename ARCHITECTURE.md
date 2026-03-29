@@ -154,18 +154,19 @@ Layer 3: ESCALATION
 
 ## Data Persistence
 
-SQLite database with 8 tables:
+SQLite database with 9 tables:
 
 | Table | Purpose |
 |-------|---------|
-| `employees` | Employee records (onboarding) |
-| `audit_logs` | Complete decision audit trail |
-| `workflow_states` | Checkpoint/recovery state |
-| `edge_case_log` | Edge case detection history |
-| `security_events` | Security threat log |
-| `tool_call_log` | Every tool invocation with result |
-| `jira_tasks` | JIRA task tracking |
-| `approval_chains` | Approval routing audit |
+| `employees` | Employee records created during onboarding |
+| `jira_tasks` | JIRA tasks and account provisioning |
+| `calendar_events` | Meeting and orientation scheduling |
+| `notifications` | Email and Slack notifications sent |
+| `approval_requests` | Procurement approval routing and status |
+| `agent_audit_log` | Complete agent decision audit trail |
+| `edge_case_log` | Edge case detection and resolution history |
+| `security_events` | Security threat detection log |
+| `workflow_state` | Checkpoint/recovery state for crash resilience |
 
 ---
 
