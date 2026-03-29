@@ -174,10 +174,14 @@ function App() {
     setDbLoading(false)
   }
 
-  const openDbBrowser = () => {
+  const openDbBrowser = (autoOpenTable = null) => {
     setShowDbBrowser(true)
     setDbTableData(null)
     fetchTables()
+    // Auto-open a specific table if requested
+    if (autoOpenTable) {
+      setTimeout(() => fetchTableData(autoOpenTable), 500)
+    }
   }
 
   const statusLabel = {
@@ -697,7 +701,16 @@ function App() {
             </div>
 
             {(status === 'completed') && (
-              <button className="btn btn-back" style={{marginTop: 16}} onClick={reset}>← New Scenario</button>
+              <div style={{display: 'flex', gap: 10, marginTop: 16, flexWrap: 'wrap'}}>
+                <button className="db-promo-btn" style={{fontSize: 13, padding: '10px 18px'}} onClick={() => {
+                  const tableMap = { onboarding: 'employees', meeting: 'jira_tasks', sla_breach: 'approval_requests' }
+                  openDbBrowser(tableMap[scenario] || null)
+                }}>
+                  <span className="btn-icon">🗄️</span>
+                  {scenario === 'meeting' ? 'View Created Tasks' : scenario === 'onboarding' ? 'View Employee Record' : 'View Approval Status'}
+                </button>
+                <button className="btn btn-back" onClick={reset}>← New Scenario</button>
+              </div>
             )}
           </div>
         </div>
@@ -954,6 +967,68 @@ function App() {
                 <button className="btn btn-abort" onClick={abort}>
                   🚨 Abort
                 </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ——— DATABASE BROWSER OVERLAY (also available on dashboard) ——— */}
+      {showDbBrowser && (
+        <div className="hitl-overlay">
+          <div className="db-browser-modal">
+            <div className="db-browser-header">
+              <h2>🗄️ Enterprise Database Browser</h2>
+              <button className="btn btn-abort" onClick={() => { setShowDbBrowser(false); setDbTableData(null) }}>✕ Close</button>
+            </div>
+
+            {!dbTableData ? (
+              <div className="db-tables-grid">
+                {dbLoading ? <p style={{color: '#94a3b8'}}>Loading tables...</p> : (
+                  dbTables.map(t => (
+                    <div key={t.name} className="db-table-card" onClick={() => fetchTableData(t.name)}>
+                      <div className="db-table-icon">
+                        {t.name === 'employees' ? '👥' : t.name === 'jira_tasks' ? '📋' : t.name === 'calendar_events' ? '📅' : t.name === 'notifications' ? '📧' : t.name === 'approval_requests' ? '✅' : t.name === 'edge_case_log' ? '🔍' : t.name === 'security_events' ? '🛡️' : t.name === 'workflow_state' ? '💾' : '📊'}
+                      </div>
+                      <div className="db-table-name">{t.name.replace(/_/g, ' ')}</div>
+                      <div className="db-table-count">{t.rows} records</div>
+                    </div>
+                  ))
+                )}
+              </div>
+            ) : (
+              <div className="db-table-view">
+                <div className="db-table-back">
+                  <button className="btn" onClick={() => setDbTableData(null)} style={{background: 'rgba(99,102,241,0.2)', color: '#a5b4fc', border: 'none', padding: '8px 16px', cursor: 'pointer', borderRadius: 8}}>← Back to Tables</button>
+                  <span className="db-table-label">{dbTableData.table?.replace(/_/g, ' ')} — {dbTableData.count} records</span>
+                </div>
+                <div className="db-table-scroll">
+                  <table className="db-data-table">
+                    <thead>
+                      <tr>
+                        {dbTableData.columns?.map(col => <th key={col}>{col}</th>)}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {dbTableData.rows?.map((row, i) => (
+                        <tr key={i} className={row.created_by === 'AGENT' ? 'agent-created' : ''}>
+                          {dbTableData.columns?.map(col => (
+                            <td key={col}>
+                              {typeof row[col] === 'string' && row[col]?.length > 80
+                                ? row[col].substring(0, 80) + '...'
+                                : String(row[col] ?? '')}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {dbTableData.rows?.some(r => r.created_by === 'AGENT') && (
+                  <div className="db-legend">
+                    <span className="db-legend-dot"></span> Rows highlighted in purple were created by AI agents during execution
+                  </div>
+                )}
               </div>
             )}
           </div>
